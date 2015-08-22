@@ -1,5 +1,5 @@
 //command serial protocol standarts [command:value]
-String analizer;
+String analiser;
 boolean reading = false;
 
 void setup()
@@ -17,7 +17,7 @@ void loop()
   protocol();
 }
 
-//analit Serial for start an end listening protocol
+//analit Serial for start and end listening protocol
 void protocol() {
   char c = Serial.read();
 
@@ -26,13 +26,13 @@ void protocol() {
   }
 
   if (reading && c != -1) {
-    analizer += c;
+    analiser += c;
   }
 
   if (  c == ']' ) {
     reading = false;
-    parser(analizer);
-    analizer = "";
+    parser(analiser);
+    analiser = "";
   }
 
 }
