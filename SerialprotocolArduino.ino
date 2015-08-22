@@ -1,5 +1,5 @@
 //command serial protocol standarts [command:value]
-String analiser;
+String analyzer;
 boolean reading = false;
 
 void setup()
@@ -26,25 +26,25 @@ void protocol() {
   }
 
   if (reading && c != -1) {
-    analiser += c;
+    analyzer += c;
   }
 
   if (  c == ']' ) {
     reading = false;
-    parser(analiser);
-    analiser = "";
+    parser(analyzer);
+    analyzer = "";
   }
 
 }
 
-void parser(String analiser) {
-  analiser.replace("[", "");
-  analiser.replace("]", "");
-  int indexSeparator = analiser.indexOf(':');
-  int lastIndex = analiser.length();
+void parser(String analyzer) {
+  analyzer.replace("[", "");
+  analyzer.replace("]", "");
+  int indexSeparator = analyzer.indexOf(':');
+  int lastIndex = analyzer.length();
 
-  String command = analiser.substring(0, indexSeparator);
-  String value = analiser.substring(indexSeparator + 1, lastIndex);
+  String command = analyzer.substring(0, indexSeparator);
+  String value = analyzer.substring(indexSeparator + 1, lastIndex);
 
   caller(command, value);
 }
